@@ -47,23 +47,26 @@
       const url = document.getElementById('playlistURL').value;
       if (url) {
         // Send the URL to your backend for processing
-        fetch('https://soundcloud-backend.onrender.com/download', ...)
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ playlistURL: url })
-        })
-        .then(response => response.blob())
-        .then(blob => {
-          // Create a link to download the ZIP file
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = 'playlist.zip';
-          link.click();
-        })
-        .catch(error => {
-          console.error('Error downloading playlist:', error);
+        fetch('https://soundcloud-backend.onrender.com/download', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ url: soundcloudTrackUrl })
+})
+.then(res => {
+  if (!res.ok) throw new Error('Network response was not ok');
+  return res.blob();
+})
+.then(blob => {
+  const downloadUrl = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = downloadUrl;
+  a.download = 'track.mp3';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(downloadUrl);
+})
+.catch(err => console.error('Download error:', err));
         });
       } else {
         alert('Please enter a valid SoundCloud playlist URL.');
