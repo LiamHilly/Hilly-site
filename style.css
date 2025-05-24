@@ -1,0 +1,114 @@
+:root {
+  --bg: #121212;
+  --text: #f0f0f0;
+  --accent: #ff4d4d;
+  --card-bg: #1e1e1e;
+  --btn-bg: #2a2a2a;
+  --btn-hover: #ff4d4d;
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.header {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+.playlists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.playlist {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition);
+}
+
+.playlist:hover {
+  transform: translateY(-5px);
+}
+
+.playlist img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.playlist-info {
+  padding: 1rem;
+}
+
+.playlist-info h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.playlist-info p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: var(--btn-bg);
+  color: var(--text);
+  border-radius: 8px;
+  transition: background-color var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+  color: #fff;
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
