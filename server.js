@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const scdl = require('soundcloud-downloader').default;
@@ -6,6 +7,9 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
+app.use(cors({
+  origin: 'https://hilly-site-2.onrender.com', // your frontend
+}));
 app.use(bodyParser.json());
 
 function sanitizeFilename(name) {
