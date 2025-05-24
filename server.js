@@ -13,7 +13,8 @@ function sanitizeFilename(name) {
 }
 
 app.post('/download', async (req, res) => {
-  const { playlistURL } = req.body;
+  const { url } = req.body;
+  if (!url) return res.status(400).send('No URL provided');
   try {
     const clientID = await scdl.getClientID();
     const playlist = await scdl.getSetInfo(playlistURL, clientID);
