@@ -47,7 +47,7 @@
       const url = document.getElementById('playlistURL').value;
       if (url) {
         // Send the URL to your backend for processing
-        fetch('/download', {
+        fetch('https://soundcloud-backend.onrender.com/download', ...)
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
